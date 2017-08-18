@@ -3,8 +3,10 @@
 #include<stdlib.h>
 #include<math.h>
 #include <omp.h>
-#include <fftw3.h>
-#include "DataAnalysisFunctions.h"
+#include "tempDataAnalysisFunctions.h"
+//#include <fftw3.h>
+//#include "DataAnalysisFunctions.h"
+
 
 //#define NUM_THREADS 4
 
@@ -119,14 +121,14 @@ int main ()
 //		datay = malloc(Ny*sizeof(double));
 	printf("Starting treatment\n");
 //		get_treated_data(datax,ftreatedx);
-		tratamento_vx_spat_file(&Nx,&meanvx,&devpadx);       // <----------- DESBLOQUAR AQUI SE FOR ARQUIVO NOVO
+//		tratamento_vx_spat_file(&Nx,&meanvx,&devpadx);       // <----------- DESBLOQUAR AQUI SE FOR ARQUIVO NOVO
 //		tratamento_vx_spat(datax,&Nx,&meanvx,&devpadx);
 //		tratamento_vy_spat(datay,&Ny,&meanvy,&devpady);
 	t2=omp_get_wtime();
 	printf("Treatment time = %lf s\n",t2-t1);
 //	t1=omp_get_wtime();
 		printf("Doing the correlations...\n");
-		evaluate_corr_xdir(fout_corr_a11,fout_spec_a11,&Nx,1024,datax);
+//		evaluate_corr_xdir(fout_corr_a11,fout_spec_a11,&Nx,1024,datax);
 //		evaluate_corr_xdir(fout_corr_a12,fout_spec_a12,&Ny,1024,datay);
 //		evaluate_corr_ydir(fout_corr_a21,fout_spec_a21,&Ny,1024,datax);
 //		evaluate_corr_ydir(fout_corr_a22,fout_spec_a22,&Ny,1024,datay);
@@ -138,7 +140,7 @@ int main ()
 	//PDFs in X-direction
 	//Nbins = 1500;
 	Nbins = 3000;
-/*
+
 	j = 0;
 	printf("Longitudinal PDFs are being evaluated...\n");
 	for(displ=80;displ>4;displ=displ/2){
@@ -182,7 +184,7 @@ int main ()
 		}
 
 	fclose(out_flat);
-*/
+
 
 /*
 j = 0;
