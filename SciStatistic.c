@@ -121,7 +121,7 @@ int main ()
 //		datay = malloc(Ny*sizeof(double));
 	printf("Starting treatment\n");
 //		get_treated_data(datax,ftreatedx);
-//		tratamento_vx_spat_file(&Nx,&meanvx,&devpadx);       // <----------- DESBLOQUAR AQUI SE FOR ARQUIVO NOVO
+		tratamento_vx_spat_file(&Nx,&meanvx,&devpadx);       // <----------- DESBLOQUAR AQUI SE FOR ARQUIVO NOVO
 //		tratamento_vx_spat(datax,&Nx,&meanvx,&devpadx);
 //		tratamento_vy_spat(datay,&Ny,&meanvy,&devpady);
 	t2=omp_get_wtime();
@@ -259,9 +259,9 @@ double *variancey, double *devpady, double *meanqy){
 
 //	fleitura_x=fopen("./get/data/vx_isot_t60_N1024_completing.txt","r");
 //	fleitura_y=fopen("./get/data/vy_isot_t60_N1024_completing.txt","r");
-	fleitura_x = fopen("./get/data/vx+vy_long_isot_t60_N1024_full.txt","r");
-	fstat=fopen("./out_statistic/GeneralStats_long.dat","w");
-	statfile=fopen("./out_statistic/ReadyStats_long.dat","w");
+	fleitura_x = fopen("../get/data/vx_long_isot_t25to200_.txt","r");
+	fstat=fopen("../out_statistic/GeneralStats_long.dat","w");
+	statfile=fopen("../out_statistic/ReadyStats_long.dat","w");
 
 //	while(fscanf(fleitura_x,"%lf\n",&temp) != EOF){
 	while(fscanf(fleitura_x,"%f\n",&temp) != EOF){
@@ -370,8 +370,8 @@ void tratamento_vx_spat(double *data,double *N, double *meanv,double *devpad){
 	double temp;	
 	FILE *fleitura = NULL;
 	FILE *record_data = NULL;
-	fleitura=fopen("./get/data/vx_isot_t60_N1024_completing.txt","r");
-	record_data = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_completing.txt","w");	
+	fleitura=fopen("../get/data/vx_long_isot_t25to200_.txt","r");
+	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200_.txt","w");	
 
 	i=0;
 	while(fscanf(fleitura,"%lf",&temp)!=EOF){
@@ -441,93 +441,9 @@ void tratamento_vy_spat_file(double *N, double *meanv,double *devpad){
 	fclose(record_data);
 }
 
-//-----------------------------------------
-void treatement_file(double *meanv){
-
-	int i;
-//	double temp;	
-	float temp;	
-	FILE *fleitura1 = NULL;
-	FILE *fleitura2 = NULL;
-	FILE *fleitura3 = NULL;
-	FILE *fleitura4 = NULL;
-	FILE *fleitura5 = NULL;
-	FILE *fleitura6 = NULL;
-
-	FILE *record_data1 = NULL;
-	FILE *record_data2 = NULL;
-	FILE *record_data3 = NULL;
-	FILE *record_data4 = NULL;
-	FILE *record_data5 = NULL;
-	FILE *record_data6 = NULL;
-	
-	fleitura1=fopen("./get/data/vx_isot_t60_N1024_133planes.txt","r");
-	fleitura2=fopen("./get/data/vx_isot_t60_N1024_500to599.txt","r");
-	fleitura3=fopen("./get/data/vx_isot_t60_N1024_600to699.txt","r");
-	fleitura4=fopen("./get/data/vx_isot_t60_N1024_700to790.txt","r");
-	fleitura5=fopen("./get/data/vx_isot_t60_N1024_791to899.txt","r");
-	fleitura6=fopen("./get/data/vx_isot_t60_N1024_900to1023.txt","r");
-
-	record_data1 = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_133planes.txt","w");	
-	record_data2 = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_500to599.txt","w");	
-	record_data3 = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_600to699.txt","w");	
-	record_data4 = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_700to790.txt","w");	
-	record_data5 = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_791to899.txt","w");	
-	record_data6 = fopen("./out_statistic/treated_data/vx_isot_t60_N1024_900to1023.txt","w");	
-
-	while(fscanf(fleitura1,"%f",&temp)!=EOF){
-		fprintf(record_data1,"%f\n",(float)(temp-*meanv));
-		i++;		
-		}
-	fclose(fleitura1);
-	fclose(record_data1);
-
-	while(fscanf(fleitura2,"%f",&temp)!=EOF){
-		fprintf(record_data2,"%f\n",(float)(temp-*meanv));
-		i++;		
-		}
-	fclose(fleitura2);
-	fclose(record_data2);
-
-
-	while(fscanf(fleitura3,"%f",&temp)!=EOF){
-		fprintf(record_data3,"%f\n",(float)(temp-*meanv));
-		i++;		
-		}
-	fclose(fleitura3);
-	fclose(record_data3);
-
-
-	while(fscanf(fleitura4,"%f",&temp)!=EOF){
-		fprintf(record_data4,"%f\n",(float)(temp-*meanv));
-		i++;		
-		}
-	fclose(fleitura4);
-	fclose(record_data4);
-
-
-	while(fscanf(fleitura5,"%f",&temp)!=EOF){
-		fprintf(record_data5,"%f\n",(float)(temp-*meanv));
-		i++;		
-		}
-	fclose(fleitura5);
-	fclose(record_data5);
-
-
-	while(fscanf(fleitura6,"%f",&temp)!=EOF){
-		fprintf(record_data6,"%f\n",(float)(temp-*meanv));
-		i++;		
-		}
-	fclose(fleitura6);
-	fclose(record_data6);
-
-
-
-
-}
 
 //-----------------------------------------
-void get_treated_data(double *data, char *dir){
+/*void get_treated_data(double *data, char *dir){
 	int i;
 	double temp;	
 	FILE *fleitura = NULL;
@@ -540,10 +456,10 @@ void get_treated_data(double *data, char *dir){
 		}
 	fclose(fleitura);
 }
-
+*/
 
 //--------------------------------------- FUNCIONANDO
-
+/*
 
 void evaluate_corr_xdir(FILE *fout_c, FILE *fout_spec,double *N, int size,double *data){
 	double *input = NULL;
@@ -585,9 +501,9 @@ void evaluate_corr_xdir(FILE *fout_c, FILE *fout_spec,double *N, int size,double
 	free(serie);
 	//free(serief);
 }
-
+*/
 //------------------------------------------------
-
+/*
 void evaluate_corr_ydir(FILE *fout_c, FILE *fout_spec, double *N, int size,double *data){
 	double *input = NULL;
 	double *output = NULL;
@@ -628,5 +544,5 @@ void evaluate_corr_ydir(FILE *fout_c, FILE *fout_spec, double *N, int size,doubl
 	free(serie);
 	free(serief);
 }
-
+*/
 //------------------------------------------------
