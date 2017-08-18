@@ -371,7 +371,7 @@ void tratamento_vx_spat(double *data,double *N, double *meanv,double *devpad){
 	FILE *fleitura = NULL;
 	FILE *record_data = NULL;
 	fleitura=fopen("../get/data/vx_long_isot_t25to200_.txt","r");
-	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200_.txt","w");	
+	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200.txt","w");	
 
 	i=0;
 	while(fscanf(fleitura,"%lf",&temp)!=EOF){
@@ -410,8 +410,8 @@ void tratamento_vx_spat_file(double *N, double *meanv,double *devpad){
 	FILE *fleitura = NULL;
 	FILE *record_data = NULL;
 //	fleitura=fopen("./get/data/vx_isot_t60_N1024_completing.txt","r");
-	fleitura = fopen("./get/data/vx+vy_long_isot_t60_N1024_full.txt","r");
-	record_data = fopen("./out_statistic/treated_data/vx+vy_long_isot_t60_N1024_full.txt","w");	
+	fleitura=fopen("../get/data/vx_long_isot_t25to200_.txt","r");
+	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200.txt","w");	
 
 	i=0;
 //	while(fscanf(fleitura,"%lf",&temp)!=EOF){
