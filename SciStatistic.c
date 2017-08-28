@@ -74,16 +74,16 @@ int main ()
 
 	FILE *out_flat = NULL;
 	FILE *out_kurt = NULL;
-	out_flat = fopen("./out_statistic/hflat_bypdf_long.dat","a");
-	out_kurt = fopen("./out_statistic/kurt_bypdf_long.dat","a");
+	out_flat = fopen("./out_statistic/hflat_bypdf_transv.dat","a");
+	out_kurt = fopen("./out_statistic/kurt_bypdf_transv.dat","a");
 
 	FILE *out_struc = NULL;
-	out_struc = fopen("./out_statistic/StructureFunctions_long.dat","a");
+	out_struc = fopen("./out_statistic/StructureFunctions_transv.dat","a");
 
 	//Structure variables	
-	char fx[] = "../get/data/vx_long_isot_t25to200_.txt";
+	char fx[] = "../get/data/vy_transv_isot_t25to200_.txt";
 //	char fy[] = "./get/data/vy_isot_t60_N1024_completing.txt";
-	char ftreatedx[] = "../out_statistic/treated_data/vx_long_isot_t25to200.txt";
+	char ftreatedx[] = "../out_statistic/treated_data/vy_transv_isot_t25to200.txt";
 //	char ftreatedy[] = "../out_statistic/treated_data/vy_long_isot_t25to200.txt";
 	
 	FILE *fdatax = NULL;
@@ -140,7 +140,7 @@ int main ()
 	//PDFs in X-direction
 	//Nbins = 1500;
 	Nbins = 3000;
-
+/*
 	j = 0;
 	printf("Longitudinal PDFs are being evaluated...\n");
 	for(displ=80;displ>4;displ=displ/2){
@@ -160,7 +160,8 @@ int main ()
 		j++;
 		}
 	fclose(out_flat);
-
+*/
+/*
 	j = 0;
 	printf("Longitudinal PDFs are being evaluated...\n");
 //	for(displ=93;displ>2;displ=displ/1.5){
@@ -184,7 +185,7 @@ int main ()
 		}
 
 	fclose(out_flat);
-
+*/
 
 /*
 j = 0;
@@ -259,9 +260,9 @@ double *variancey, double *devpady, double *meanqy){
 
 //	fleitura_x=fopen("./get/data/vx_isot_t60_N1024_completing.txt","r");
 //	fleitura_y=fopen("./get/data/vy_isot_t60_N1024_completing.txt","r");
-	fleitura_x = fopen("../get/data/vx_long_isot_t25to200_.txt","r");
-	fstat=fopen("../out_statistic/GeneralStats_long.dat","w");
-	statfile=fopen("../out_statistic/ReadyStats_long.dat","w");
+	fleitura_x = fopen("../get/data/vy_transv_isot_t25to200_.txt","r");
+	fstat=fopen("../out_statistic/GeneralStats_transv.dat","w");
+	statfile=fopen("../out_statistic/ReadyStats_transv.dat","w");
 
 //	while(fscanf(fleitura_x,"%lf\n",&temp) != EOF){
 	while(fscanf(fleitura_x,"%f\n",&temp) != EOF){
@@ -410,7 +411,7 @@ void tratamento_vx_spat_file(double *N, double *meanv,double *devpad){
 	FILE *fleitura = NULL;
 	FILE *record_data = NULL;
 //	fleitura=fopen("./get/data/vx_isot_t60_N1024_completing.txt","r");
-	fleitura=fopen("../get/data/vx_long_isot_t25to200_.txt","r");
+	fleitura=fopen("../get/data/vy_transv_isot_t25to200_.txt","r");
 	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200.txt","w");	
 
 	i=0;
