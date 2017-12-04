@@ -74,17 +74,17 @@ int main ()
 
 	FILE *out_flat = NULL;
 	FILE *out_kurt = NULL;
-	out_flat = fopen("./out_statistic/hflat_bypdf_long.dat","a");
-	out_kurt = fopen("./out_statistic/kurt_bypdf_long.dat","a");
+	out_flat = fopen("./out_statistic/hflat_bypdf_transv.dat","a");
+	out_kurt = fopen("./out_statistic/kurt_bypdf_transv.dat","a");
 
 	FILE *out_struc = NULL;
-	out_struc = fopen("./out_statistic/StructureFunctions_long.dat","a");
+	out_struc = fopen("./out_statistic/StructureFunctions_transv.dat","a");
 
 	//Structure variables	
-	char fx[] = "../get/data/vx_long_isot_t25to200_.txt";
+	char fx[] = "../get/data/vy_transv_isot_t25to200_.txt";
 //	char fy[] = "./get/data/vy_isot_t60_N1024_completing.txt";
-	char ftreatedx[] = "../out_statistic/treated_data/vx_long_isot_t25to200.txt";
-//	char ftreatedy[] = "../out_statistic/treated_data/vy_long_isot_t25to200.txt";
+	char ftreatedx[] = "../out_statistic/treated_data/vy_transv_isot_t25to200.txt";
+//	char ftreatedy[] = "../out_statistic/treated_data/vy_transv_isot_t25to200.txt";
 	
 	FILE *fdatax = NULL;
 //	FILE *fdatay = NULL;
@@ -121,7 +121,7 @@ int main ()
 //		datay = malloc(Ny*sizeof(double));
 	printf("Starting treatment\n");
 //		get_treated_data(datax,ftreatedx);
-		tratamento_vx_spat_file(&Nx,&meanvx,&devpadx);       // <----------- DESBLOQUAR AQUI SE FOR ARQUIVO NOVO
+//		tratamento_vx_spat_file(&Nx,&meanvx,&devpadx);       // <----------- DESBLOQUAR AQUI SE FOR ARQUIVO NOVO
 //		tratamento_vx_spat(datax,&Nx,&meanvx,&devpadx);
 //		tratamento_vy_spat(datay,&Ny,&meanvy,&devpady);
 	t2=omp_get_wtime();
@@ -142,12 +142,12 @@ int main ()
 	Nbins = 3000;
 
 	j = 0;
-	printf("Longitudinal PDFs are being evaluated...\n");
+	printf("transvitudinal PDFs are being evaluated...\n");
 	for(displ=80;displ>4;displ=displ/2){
 //	for(displ=800;displ<1023;displ=displ+50){
 		for(i=0;i<43;i++) {fileout[i]=0;}
 		sprintf(str,"%d",displ);
-		strcat(fileout,"./out_statistic/histograms/full_cube_xy/long_x_l");
+		strcat(fileout,"../out_statistic/histograms/transv_y_l");
 		strcat(fileout,str);
 		strcat(fileout,".dat");
 
@@ -162,14 +162,14 @@ int main ()
 	fclose(out_flat);
 
 	j = 0;
-	printf("Longitudinal PDFs are being evaluated...\n");
+	printf("transvitudinal PDFs are being evaluated...\n");
 //	for(displ=93;displ>2;displ=displ/1.5){
 	for(displ=90;displ>2;displ=displ/1.5){
 //	for(displ=800;displ<1023;displ=displ+50){
 
 		for(i=0;i<43;i++) {fileout[i]=0;}
 		sprintf(str,"%d",displ);
-		strcat(fileout,"./out_statistic/histograms/full_cube_xy/long_x_l");
+		strcat(fileout,"../out_statistic/histograms/transv_y_l");
 		strcat(fileout,str);
 		strcat(fileout,".dat");
 
@@ -311,8 +311,8 @@ void tratamento_vx_spat(double *data,double *N, double *meanv,double *devpad){
 	double temp;	
 	FILE *fleitura = NULL;
 	FILE *record_data = NULL;
-	fleitura=fopen("../get/data/vx_long_isot_t25to200_.txt","r");
-	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200.txt","w");	
+	fleitura=fopen("../get/data/vx_transv_isot_t25to200_.txt","r");
+	record_data = fopen("../out_statistic/treated_data/vx_transv_isot_t25to200.txt","w");	
 
 	i=0;
 	while(fscanf(fleitura,"%lf",&temp)!=EOF){
@@ -351,8 +351,8 @@ void tratamento_vx_spat_file(double *N, double *meanv,double *devpad){
 	FILE *fleitura = NULL;
 	FILE *record_data = NULL;
 //	fleitura=fopen("./get/data/vx_isot_t60_N1024_completing.txt","r");
-	fleitura=fopen("../get/data/vx_long_isot_t25to200_.txt","r");
-	record_data = fopen("../out_statistic/treated_data/vx_long_isot_t25to200.txt","w");	
+	fleitura=fopen("../get/data/vx_transv_isot_t25to200_.txt","r");
+	record_data = fopen("../out_statistic/treated_data/vx_transv_isot_t25to200.txt","w");	
 
 	i=0;
 //	while(fscanf(fleitura,"%lf",&temp)!=EOF){
