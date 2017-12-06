@@ -235,7 +235,7 @@ j = 0;
 
 	for(displ=5;displ<200;displ=displ*1.3){
 //		structure_function(out_struc,datax, displ, 1024, Nx, 1,8);
-		structure_function_file(out_struc,fdatax, &displ, 1024, &Nx, 2,3);
+		structure_function_file(out_struc,fdatax, displ, 1024, Nx, 2,3);
 		printf("displ = %d done\n",displ);
 		}
 
