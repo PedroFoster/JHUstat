@@ -74,7 +74,7 @@ int main ()
 
 	FILE *out_flat = NULL;
 	FILE *out_kurt = NULL;
-	out_flat = fopen("./out_statistic/hflat_bypdf_transv.dat","a");
+//	out_flat = fopen("./out_statistic/hflat_bypdf_transv.dat","a");
 	out_kurt = fopen("./out_statistic/kurt_bypdf_transv.dat","a");
 
 	FILE *out_struc = NULL;
@@ -231,11 +231,11 @@ j = 0;
 
 		}
 */
-	fclose(out_flat);
+//	fclose(out_flat);
 
 	for(displ=5;displ<200;displ=displ*1.3){
 //		structure_function(out_struc,datax, displ, 1024, Nx, 1,8);
-		structure_function_file(out_struc,fdatax, displ, 1024, Nx, 2,3);
+		structure_function_file(out_struc,fdatax, &displ, 1024, &Nx, 2,3);
 		printf("displ = %d done\n",displ);
 		}
 
